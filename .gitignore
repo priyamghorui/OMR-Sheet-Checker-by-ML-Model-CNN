@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual Environment
+venv/
+env/
+*.egg-info/
+
+# Django-specific
+db.sqlite3
+*.log
+*.pot
+*.pyc
+
+# Media & Static files
+/media/
+
+# VS Code / JetBrains / MacOS
+.vscode/
+.idea/
+.DS_Store
+
+# Environment Variables
+.env
+
+# Migrations (optional if auto-generated)
+**/migrations/*.py
+!**/migrations/__init__.py

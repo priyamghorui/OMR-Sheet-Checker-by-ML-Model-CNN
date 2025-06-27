@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">OMR Check</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+          </ul>
+         
+        </div>
+      </div>
+    </nav>
+    <!-- {% if image %}
+
+    <div class="container d-flex justify-content-center">
+      <div class="card">
+        <div class="card-body d-flex flex-column">
+          <p>Title : {{ image.title }}</p>
+
+          <img
+            src="{{ image.image.url }}"
+            style="height: 600px"
+            class="img-fluid"
+            alt="{{ image.title }}"
+          />
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <p>No image found.</p>
+    {% endif %} -->
+    <div
+      class="container d-flex justify-content-center justify-content-evenly mt-4 mb-5"
+    >
+      <div>
+        {% if studentOmr %}
+        <div class="card">
+          <div class="card-body d-flex flex-column">
+            <p>Student Omr Sheet</p>
+
+            <img
+              src="{{ studentOmr }}"
+              style="height: 600px"
+              class="img-fluid"
+              alt="Matplotlib Plot"
+            />
+          </div>
+        </div>
+        {% else %}
+        <p>No image found.</p>
+        {% endif %}
+      </div>
+      <div>
+        {% if answerKey %}
+        <div class="card">
+          <div class="card-body d-flex flex-column">
+            <p>Answer Key</p>
+
+            <img
+              src="{{ answerKey }}"
+              style="height: 600px"
+              class="img-fluid"
+              alt="Matplotlib Plot"
+            />
+          </div>
+        </div>
+        {% else %}
+        <p>No image found.</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="container">
+      <form method="POST" action="setPosition" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input name="identity" value="studentOmr" style="display: none" />
+        <input name="studentName" value={{studentName}} style="display: none" />
+        <select
+          class="form-select"
+          id="columnSelectStudentOmr"
+          name="column"
+          onchange="fetchColumnDataStudentOmr()"
+        >
+          <option selected>Student OMR Sheet</option>
+          <option value="0">1st Column</option>
+          <option value="1">2nd Column</option>
+          <option value="2">3rd Column</option>
+          <option value="3">4th Column</option>
+          <option value="4">5th Column</option>
+        </select>
+        <div class="d-flex flex-row justify-content-evenly align-items-center">
+          <div class="mb-3">
+            <label class="form-label">Top</label>
+            <input
+              type="number"
+              class="form-control"
+              name="t"
+              id="tStudentOmr"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Bottom</label>
+            <input
+              type="number"
+              class="form-control"
+              name="b"
+              id="bStudentOmr"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Right</label>
+            <input
+              type="number"
+              class="form-control"
+              name="r"
+              id="rStudentOmr"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Left</label>
+            <input
+              type="number"
+              class="form-control"
+              name="l"
+              id="lStudentOmr"
+            />
+          </div>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="container">
+      <form method="POST" action="setPosition" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input name="identity" value="answerKey" style="display: none" />
+        <input name="studentName" value={{studentName}} style="display: none" />
+        <select
+          class="form-select"
+          id="columnSelectAnswerKey"
+          name="column"
+          onchange="fetchColumnDataAnswerKey()"
+        >
+          <option selected>Answer Key</option>
+          <option value="0">1st Column</option>
+          <option value="1">2nd Column</option>
+          <option value="2">3rd Column</option>
+          <option value="3">4th Column</option>
+          <option value="4">5th Column</option>
+        </select>
+        <div class="d-flex flex-row justify-content-evenly align-items-center">
+          <div class="mb-3">
+            <label class="form-label">Top</label>
+            <input
+              type="number"
+              class="form-control"
+              name="t"
+              id="tAnswerKey"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Bottom</label>
+            <input
+              type="number"
+              class="form-control"
+              name="b"
+              id="bAnswerKey"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Right</label>
+            <input
+              type="number"
+              class="form-control"
+              name="r"
+              id="rAnswerKey"
+            />
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Left</label>
+            <input
+              type="number"
+              class="form-control"
+              name="l"
+              id="lAnswerKey"
+            />
+          </div>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="container mb-5 mt-4">
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseThree"
+              aria-expanded="false"
+              aria-controls="collapseThree"
+            >
+              View Analysis
+            </button>
+          </h2>
+          <div
+            id="collapseThree"
+            class="accordion-collapse collapse"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body d-flex flex-row justify-content-evenly">
+              <div>
+                <p>Student</p>
+                {% if studentOmr %}
+                <table
+  border="1"
+  cellpadding="8"
+  cellspacing="0"
+  class="table table-striped"
+>
+  {% for row in matixStudentOmr %}
+    <tr>
+      <td style="background-color: rgb(242 242 242);"><strong>{{ forloop.counter }}</strong></td>
+      {% for value in row %}
+        {% if value %}
+          <td style="background-color: rgb(0, 0, 0); color: white;">
+            {{ value }}
+          </td>
+        {% else %}
+          <td>{{ value }}</td>
+        {% endif %}
+      {% endfor %}
+    </tr>
+  {% endfor %}
+</table>
+
+                {% else %}
+                <p>No image found.</p>
+                {% endif %}
+              </div>
+              <div>
+                <p>Answer Key</p>
+                {% if answerKey %}
+                <table border="1" cellpadding="8" cellspacing="0" class="table table-striped">
+                  {% for row in matrixAnswerKey %}
+                  <tr>
+      <td style="background-color: rgb(242 242 242);"><strong>{{ forloop.counter }}</strong></td>
+
+                    {% for value in row %} {% if value %}
+                    <td style="background-color: rgb(0, 0, 0); color: white">
+                      {{ value }}
+                    </td>
+                    {% else %}
+                    <td>{{ value }}</td>
+                    {% endif %} {% endfor %}
+                  </tr>
+                  {% endfor %}
+                </table>
+                {% else %}
+                <p>No image found.</p>
+                {% endif %}
+              </div>
+              <div>
+                <p>Result</p>
+                {% if ans %}
+                <table border="1" cellpadding="8" cellspacing="0" class="table table-striped">
+                  {% for score,studentOmr in ans %}
+                  <tr>
+      <td style="background-color: rgb(242 242 242);"><strong>{{ forloop.counter }}</strong></td>
+
+                    {% if score %} {% for value in studentOmr %} {% if value %}
+                    <td style="color: white" class="bg-success">{{ value }}</td>
+                    {% else %}
+                    <td>{{ value }}</td>
+                    {% endif %} {% endfor %}
+                    {%else%}{% for value in studentOmr %} {% if value %}
+                    <td style="color: white" class="bg-danger">{{ value }}</td>
+                    {% else %}
+                    <td>{{ value }}</td>
+                    {% endif %} {% endfor %}
+                    {% endif %}
+                  </tr>
+                  {% endfor %}
+                </table>
+                {% else %}
+                <p>No image found.</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container mb-5">
+      <div class="card">
+        <h5 class="p-4 border-bottom">Student Name : {{studentName}}</h5>
+
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Sl No.</th>
+                <th scope="col">Total Question</th>
+                <th scope="col">Attempt Question</th>
+                <th scope="col">Correct Answer</th>
+                <th scope="col">InCorrect Answer</th>
+                <th scope="col">score</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if studentOmr %}
+
+              <tr>
+                <th scope="row">1</th>
+                <td>{{result.totalQuestion}}</td>
+                <td>{{result.attempt}}</td>
+                <td>{{result.correct}}</td>
+                <td>{{result.incorrect}}</td>
+                <td>{{result.marks}}</td>
+              </tr>
+
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- {% for img in images %}
+  <div style="margin-bottom: 20px;">
+    <p>{{ img.title }}</p>
+    <img src="{{ img.image.url }}" alt="{{ img.title }}" width="300">
+  </div>
+{% endfor %} -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function fetchColumnDataStudentOmr() {
+        const col = document.getElementById("columnSelectStudentOmr").value;
+        console.log(col);
+
+        fetch(`/get_columnStudentOmr/?column=${col}`)
+          .then((res) => res.json())
+          .then((data) => {
+            // Set each input field with corresponding values
+            document.getElementById("tStudentOmr").value = data.t;
+            document.getElementById("bStudentOmr").value = data.b;
+            document.getElementById("rStudentOmr").value = data.r;
+            document.getElementById("lStudentOmr").value = data.l;
+          });
+      }
+      function fetchColumnDataAnswerKey() {
+        const col = document.getElementById("columnSelectAnswerKey").value;
+        console.log(col);
+
+        fetch(`/get_columnAnswerKey/?column=${col}`)
+          .then((res) => res.json())
+          .then((data) => {
+            // Set each input field with corresponding values
+            document.getElementById("tAnswerKey").value = data.t;
+            document.getElementById("bAnswerKey").value = data.b;
+            document.getElementById("rAnswerKey").value = data.r;
+            document.getElementById("lAnswerKey").value = data.l;
+          });
+      }
+    </script>
+  </body>
+</html>
