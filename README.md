@@ -14,21 +14,22 @@ A machine learning–based web application for checking OMR (Optical Mark Recogn
 
 ---
 ## 🖼️ Demo
-![Screenshot 2025-06-27 145257](https://github.com/user-attachments/assets/a05529cd-fa5e-4e93-b2c8-f5f06f7ae3ac)
+![Screenshot 2025-06-27 145257](https://github.com/user-attachments/assets/ee78856c-ef88-4306-9ac0-c40f4fcdd9e2)
 
-![Screenshot 2025-06-27 145413](https://github.com/user-attachments/assets/780c1503-df52-4a69-a5c0-bc18c412eee0)
+![Screenshot 2025-06-27 145413](https://github.com/user-attachments/assets/2b4aa01d-25ec-4b4a-9bfd-3bc9c348dcbb)
 
-![Screenshot 2025-06-27 151926](https://github.com/user-attachments/assets/c5333883-d631-4431-8342-712bf4c4d1a0)
+![Screenshot 2025-06-27 151926](https://github.com/user-attachments/assets/a0577f58-285e-42bc-bd8a-8ccc99e7cb16)
 
-![Screenshot 2025-06-27 151942](https://github.com/user-attachments/assets/05f2c082-7f3d-4638-b53d-e23ab6c8ef14)
+![Screenshot 2025-06-27 151942](https://github.com/user-attachments/assets/26dbc07f-4992-4d71-969f-80a261a330f9)
 
-![Screenshot 2025-06-27 154948](https://github.com/user-attachments/assets/2a4fb719-fa5e-4ad3-99b7-ddd8a0f50016)
+![Screenshot 2025-06-27 154948](https://github.com/user-attachments/assets/9963893f-14a8-4db6-92bd-1ed514404ff0)
 
-![Screenshot 2025-06-27 155034](https://github.com/user-attachments/assets/3a31daa8-039a-4db0-951b-965f8fbb3a1f)
+![Screenshot 2025-06-27 155034](https://github.com/user-attachments/assets/9b23dbbf-3670-457b-a657-88ac3ce82353)
 
-![Screenshot 2025-06-27 155044](https://github.com/user-attachments/assets/9fe5ac6d-a782-4906-a981-ff1253a13958)
+![Screenshot 2025-06-27 155044](https://github.com/user-attachments/assets/9eb510ce-b573-4718-a102-c66a04da387f)
 
-![Screenshot 2025-06-27 155210](https://github.com/user-attachments/assets/d143667d-9fab-4bd7-b987-15fc5fc3a2e8)
+![Screenshot 2025-06-27 155210](https://github.com/user-attachments/assets/141b6361-5ccf-49f4-95a0-7833f4064778)
+
 
 ---
 
